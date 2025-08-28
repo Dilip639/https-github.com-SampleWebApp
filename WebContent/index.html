@@ -1,11 +1,52 @@
 <!DOCTYPE html>
- <html>
- <head> <title>Page Title</title> 
-</head>
- <body>
- <h1>Welcome to My Website</h1> 
-<p>This is the content of my web page.</p>
- <a href="https://www.testing.com">Visit Example</a> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🎲 Guess the Number (1–100)</title>
 
- </body>
- </html>
+  <!-- Link external CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="card" role="main" aria-live="polite">
+    <div class="confetti" aria-hidden="true"></div>
+
+    <h1 class="title"><span class="die">🎲</span> Guess the Number</h1>
+    <p class="subtitle">I'm thinking of a number between <strong>1</strong> and <strong>100</strong>. 
+      You have <strong id="maxAttempts">7</strong> attempts. Good luck!</p>
+
+    <div class="row" role="form" aria-label="Guess form">
+      <input id="guessInput" type="number" inputmode="numeric" min="1" max="100" placeholder="Enter your guess…" autocomplete="off" />
+      <button id="guessBtn">Guess</button>
+      <button id="resetBtn" class="secondary" title="Start a new game">Reset</button>
+    </div>
+
+    <div class="info" id="infoText">Tip: Press <span class="kbd">Enter</span> to submit.</div>
+    <div class="attempts">
+      <div class="badges">
+        <span class="badge">Attempts: <strong id="attempts">0</strong>/ <span id="maxAttempts2">7</span></span>
+        <span class="badge">Remaining: <strong id="remaining">7</strong></span>
+        <span class="badge">Best: <strong id="best">—</strong></span>
+      </div>
+      <div class="bar" aria-label="Attempts used progress">
+        <div id="progress"></div>
+      </div>
+    </div>
+
+    <div class="range" id="rangeHint">Current range: <strong id="lowBound">1</strong> – <strong id="highBound">100</strong></div>
+
+    <div id="feedback" class="feedback" aria-live="assertive"></div>
+
+    <section class="history" aria-label="Guess history" id="history"></section>
+
+    <div class="footer">
+      <div>Made with ❤️ • No libraries • Works offline</div>
+      <div>New game: <span class="kbd">R</span></div>
+    </div>
+  </main>
+
+  <!-- Link external JS -->
+  <script src="js/script.js"></script>
+</body>
+</html>
