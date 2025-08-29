@@ -22,6 +22,21 @@
     <section class="panel">
       <h2>Build Portfolio</h2>
 
+      <!-- Photo -->
+      <div class="divider">Photo</div>
+      <div class="row">
+        <div class="group" style="max-width:240px">
+          <label>Upload Profile Photo (PNG/JPG)</label>
+          <input id="photoInput" type="file" accept="image/*" />
+          <small>Max ~2–3MB recommended</small>
+        </div>
+        <div class="group" style="align-items:center;max-width:240px">
+          <label>Preview</label>
+          <img id="photoPreview" class="avatar" alt="Preview" />
+          <button id="removePhotoBtn" type="button" class="secondary">Remove Photo</button>
+        </div>
+      </div>
+
       <div class="group">
         <label>Full Name</label>
         <input id="nameInput" type="text" placeholder="e.g., Priya Sharma" />
@@ -48,15 +63,41 @@
         </div>
       </div>
 
+      <!-- Job Seeker Information -->
+      <div class="divider">Job Seeker Info</div>
       <div class="row">
         <div class="group">
-          <label>Website</label>
-          <input id="websiteInput" type="url" placeholder="https://example.com" />
+          <label>Phone</label>
+          <input id="phoneInput" type="tel" placeholder="+91 98765 43210" />
         </div>
         <div class="group">
-          <label>GitHub</label>
-          <input id="githubInput" type="url" placeholder="https://github.com/username" />
+          <label>Years of Experience</label>
+          <input id="yoeInput" type="number" min="0" max="50" placeholder="e.g., 3" />
         </div>
+      </div>
+      <div class="row">
+        <div class="group">
+          <label>Current/Desired Role</label>
+          <input id="roleInput" type="text" placeholder="e.g., React Developer" />
+        </div>
+        <div class="group">
+          <label>Resume/CV Link</label>
+          <input id="resumeInput" type="url" placeholder="https://drive/… or portfolio PDF link" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="group">
+          <label>LinkedIn</label>
+          <input id="linkedinInput" type="url" placeholder="https://linkedin.com/in/username" />
+        </div>
+        <div class="group">
+          <label>Portfolio Website</label>
+          <input id="websiteInput" type="url" placeholder="https://example.com" />
+        </div>
+      </div>
+      <div class="group">
+        <label>GitHub</label>
+        <input id="githubInput" type="url" placeholder="https://github.com/username" />
       </div>
 
       <!-- Skills -->
@@ -66,6 +107,60 @@
         <button id="addSkillBtn" type="button">Add Skill</button>
       </div>
       <ul id="skillsList" class="chips"></ul>
+
+      <!-- Work Experience -->
+      <div class="divider">Work Experience</div>
+      <div class="row">
+        <div class="group">
+          <label>Company</label>
+          <input id="expCompanyInput" type="text" placeholder="e.g., Acme Pvt Ltd" />
+        </div>
+        <div class="group">
+          <label>Title</label>
+          <input id="expTitleInput" type="text" placeholder="e.g., Software Engineer" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="group">
+          <label>Start – End</label>
+          <input id="expDatesInput" type="text" placeholder="e.g., 2022 – Present" />
+        </div>
+        <div class="group">
+          <label>Location</label>
+          <input id="expLocInput" type="text" placeholder="City, Country (optional)" />
+        </div>
+      </div>
+      <div class="group">
+        <label>Highlights (comma separated)</label>
+        <input id="expHighlightsInput" type="text" placeholder="e.g., Led UI revamp, 20% faster build" />
+      </div>
+      <button id="addExpBtn" type="button">Add Experience</button>
+      <div id="expBuilderList" class="list"></div>
+
+      <!-- Education -->
+      <div class="divider">Education</div>
+      <div class="row">
+        <div class="group">
+          <label>Institution</label>
+          <input id="eduInstInput" type="text" placeholder="e.g., IIT Bombay" />
+        </div>
+        <div class="group">
+          <label>Degree</label>
+          <input id="eduDegreeInput" type="text" placeholder="e.g., B.Tech CSE" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="group">
+          <label>Years</label>
+          <input id="eduYearsInput" type="text" placeholder="e.g., 2019 – 2023" />
+        </div>
+        <div class="group">
+          <label>Score/CGPA (optional)</label>
+          <input id="eduScoreInput" type="text" placeholder="e.g., 8.4 CGPA" />
+        </div>
+      </div>
+      <button id="addEduBtn" type="button">Add Education</button>
+      <div id="eduBuilderList" class="list"></div>
 
       <!-- Projects -->
       <div class="divider">Projects</div>
@@ -96,13 +191,25 @@
       <h2>Live Preview</h2>
       <article id="preview">
         <header class="hero">
-          <h1 id="pName">Your Name</h1>
-          <p id="pTagline">Your Tagline</p>
-          <p id="pMeta"><span id="pLocation">Location</span> • <a id="pEmail" href="#">Email</a></p>
-          <p class="links">
-            <a id="pWebsite" href="#" target="_blank" rel="noopener">Website</a>
-            <a id="pGithub" href="#" target="_blank" rel="noopener">GitHub</a>
-          </p>
+          <div class="heroRow">
+            <img id="pPhoto" class="avatar" alt="Profile Photo" />
+            <div>
+              <h1 id="pName">Your Name</h1>
+              <p id="pTagline">Your Tagline</p>
+              <p id="pMeta">
+                <span id="pLocation">Location</span> • <a id="pEmail" href="#">Email</a>
+              </p>
+              <p class="links">
+                <a id="pPhone" href="#">Phone</a>
+                <a id="pWebsite" href="#" target="_blank" rel="noopener">Website</a>
+                <a id="pGithub" href="#" target="_blank" rel="noopener">GitHub</a>
+                <a id="pLinkedIn" href="#" target="_blank" rel="noopener">LinkedIn</a>
+                <a id="pResume" href="#" target="_blank" rel="noopener">Resume</a>
+              </p>
+              <p id="pYOE" class="muted"></p>
+              <p id="pRole" class="muted"></p>
+            </div>
+          </div>
         </header>
 
         <section>
@@ -116,6 +223,16 @@
         </section>
 
         <section>
+          <h3>Work Experience</h3>
+          <div id="pExp" class="cards"></div>
+        </section>
+
+        <section>
+          <h3>Education</h3>
+          <div id="pEdu" class="cards"></div>
+        </section>
+
+        <section>
           <h3>Projects</h3>
           <div id="pProjects" class="cards"></div>
         </section>
@@ -124,7 +241,7 @@
   </main>
 
   <footer class="foot">
-    <small>Tip: Click Save to store data locally. Load retrieves your last edit. Download exports a static HTML of the preview.</small>
+    <small>Tip: Save stores everything (including photo) in your browser. Load restores it. Download exports a static HTML.</small>
   </footer>
 
   <script src="js/script.js"></script>
