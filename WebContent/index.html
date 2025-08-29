@@ -1,52 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>🎲 Guess the Number (1–100)</title>
-
-  <!-- Link external CSS -->
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Maker</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="card" role="main" aria-live="polite">
-    <div class="confetti" aria-hidden="true"></div>
 
-    <h1 class="title"><span class="die">🎲</span> Guess the Number</h1>
-    <p class="subtitle">I'm thinking of a number between <strong>1</strong> and <strong>100</strong>. 
-      You have <strong id="maxAttempts">7</strong> attempts. Good luck!</p>
+  <!-- Input Form -->
+  <div class="form-container">
+    <h2>Enter Your Details</h2>
 
-    <div class="row" role="form" aria-label="Guess form">
-      <input id="guessInput" type="number" inputmode="numeric" min="1" max="100" placeholder="Enter your guess…" autocomplete="off" />
-      <button id="guessBtn">Guess</button>
-      <button id="resetBtn" class="secondary" title="Start a new game">Reset</button>
-    </div>
+    <label>Name:</label><br>
+    <input type="text" id="name" placeholder="Your Name"><br><br>
 
-    <div class="info" id="infoText">Tip: Press <span class="kbd">Enter</span> to submit.</div>
-    <div class="attempts">
-      <div class="badges">
-        <span class="badge">Attempts: <strong id="attempts">0</strong>/ <span id="maxAttempts2">7</span></span>
-        <span class="badge">Remaining: <strong id="remaining">7</strong></span>
-        <span class="badge">Best: <strong id="best">—</strong></span>
-      </div>
-      <div class="bar" aria-label="Attempts used progress">
-        <div id="progress"></div>
-      </div>
-    </div>
+    <label>Role:</label><br>
+    <input type="text" id="role" placeholder="e.g. Web Developer"><br><br>
 
-    <div class="range" id="rangeHint">Current range: <strong id="lowBound">1</strong> – <strong id="highBound">100</strong></div>
+    <label>About You:</label><br>
+    <textarea id="about" placeholder="Write something about you..."></textarea><br><br>
 
-    <div id="feedback" class="feedback" aria-live="assertive"></div>
+    <label>Skills (comma separated):</label><br>
+    <input type="text" id="skills" placeholder="HTML, CSS, JS"><br><br>
 
-    <section class="history" aria-label="Guess history" id="history"></section>
+    <label>Projects (comma separated):</label><br>
+    <input type="text" id="projects" placeholder="Project1, Project2"><br><br>
 
-    <div class="footer">
-      <div>Made with ❤️ • No libraries • Works offline</div>
-      <div>New game: <span class="kbd">R</span></div>
-    </div>
-  </main>
+    <button onclick="generatePortfolio()">Generate Portfolio</button>
+  </div>
 
-  <!-- Link external JS -->
-  <script src="js/script.js"></script>
+  <!-- Portfolio Preview -->
+  <div class="preview-container" id="portfolio">
+    <h2>Portfolio Preview</h2>
+    <h1>Your Name</h1>
+    <h3>Your Role</h3>
+    <p>About section...</p>
+    <h4>Skills</h4>
+    <ul></ul>
+    <h4>Projects</h4>
+    <ul></ul>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
