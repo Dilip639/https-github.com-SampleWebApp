@@ -1,22 +1,23 @@
-function generatePortfolio() {
-  // Get values
-  const name = document.getElementById("name").value;
-  const role = document.getElementById("role").value;
-  const about = document.getElementById("about").value;
-  const skills = document.getElementById("skills").value.split(",");
-  const projects = document.getElementById("projects").value.split(",");
+function editAbout() {
+  const desc = document.getElementById("about-desc");
+  const newBio = prompt("Enter new bio:", desc.textContent);
+  if (newBio) desc.textContent = newBio;
+}
 
-  // Update preview
-  let portfolio = `
-    <h2>Portfolio Preview</h2>
-    <h1>${name || "Your Name"}</h1>
-    <h3>${role || "Your Role"}</h3>
-    <p>${about || "About section..."}</p>
-    <h4>Skills</h4>
-    <ul>${skills.map(skill => skill.trim() ? `<li>${skill.trim()}</li>` : "").join("")}</ul>
-    <h4>Projects</h4>
-    <ul>${projects.map(project => project.trim() ? `<li>${project.trim()}</li>` : "").join("")}</ul>
-  `;
+function addProject() {
+  const projectName = prompt("Project name:");
+  const projectDesc = prompt("Project description:");
+  if (projectName && projectDesc) {
+    const list = document.getElementById("projects-list");
+    const item = document.createElement('div');
+    item.className = 'project-item';
+    item.innerHTML = `<h3>${projectName}</h3><p>${projectDesc}</p>`;
+    list.appendChild(item);
+  }
+}
 
-  document.getElementById("portfolio").innerHTML = portfolio;
+function submitContact(e) {
+  e.preventDefault();
+  document.getElementById('contact-result').textContent = "Thank you for your message!";
+  document.getElementById('contact-form').reset();
 }
