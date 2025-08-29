@@ -4,44 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio Maker</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Input Form -->
-  <div class="form-container">
-    <h2>Enter Your Details</h2>
-
-    <label>Name:</label><br>
-    <input type="text" id="name" placeholder="Your Name"><br><br>
-
-    <label>Role:</label><br>
-    <input type="text" id="role" placeholder="e.g. Web Developer"><br><br>
-
-    <label>About You:</label><br>
-    <textarea id="about" placeholder="Write something about you..."></textarea><br><br>
-
-    <label>Skills (comma separated):</label><br>
-    <input type="text" id="skills" placeholder="HTML, CSS, JS"><br><br>
-
-    <label>Projects (comma separated):</label><br>
-    <input type="text" id="projects" placeholder="Project1, Project2"><br><br>
-
-    <button onclick="generatePortfolio()">Generate Portfolio</button>
-  </div>
-
-  <!-- Portfolio Preview -->
-  <div class="preview-container" id="portfolio">
-    <h2>Portfolio Preview</h2>
-    <h1>Your Name</h1>
-    <h3>Your Role</h3>
-    <p>About section...</p>
-    <h4>Skills</h4>
-    <ul></ul>
-    <h4>Projects</h4>
-    <ul></ul>
-  </div>
-
-  <script src="js/script.js"></script>
+  <header>
+    <nav>
+      <h1>Portfolio Maker</h1>
+      <ul id="navbar">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section id="about">
+    <h2>About Me</h2>
+    <p id="about-desc">A short bio will go here.</p>
+    <button onclick="editAbout()">Edit</button>
+  </section>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div id="projects-list">
+      <!-- Project items will appear here -->
+    </div>
+    <button onclick="addProject()">Add Project</button>
+  </section>
+  <section id="contact">
+    <h2>Contact</h2>
+    <form id="contact-form" onsubmit="submitContact(event)">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" placeholder="Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <div id="contact-result"></div>
+  </section>
+  <script src="script.js"></script>
 </body>
 </html>
