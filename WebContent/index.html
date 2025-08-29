@@ -1,44 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfolio Maker</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <nav>
-      <h1>Portfolio Maker</h1>
-      <ul id="navbar">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-  <section id="about">
-    <h2>About Me</h2>
-    <p id="about-desc">A short bio will go here.</p>
-    <button onclick="editAbout()">Edit</button>
-  </section>
-  <section id="projects">
-    <h2>Projects</h2>
-    <div id="projects-list">
-      <!-- Project items will appear here -->
+  <header class="topbar">
+    <h1>Portfolio Maker</h1>
+    <div class="actions">
+      <button id="saveBtn" type="button">Save</button>
+      <button id="loadBtn" type="button">Load</button>
+      <button id="clearBtn" type="button" class="secondary">Clear</button>
+      <button id="downloadBtn" type="button" class="outline">Download HTML</button>
     </div>
-    <button onclick="addProject()">Add Project</button>
-  </section>
-  <section id="contact">
-    <h2>Contact</h2>
-    <form id="contact-form" onsubmit="submitContact(event)">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="email" id="email" placeholder="Your Email" required>
-      <textarea id="message" placeholder="Message" required></textarea>
-      <button type="submit">Send</button>
-    </form>
-    <div id="contact-result"></div>
-  </section>
+  </header>
+
+  <main class="grid">
+    <!-- Builder -->
+    <section class="panel">
+      <h2>Build Portfolio</h2>
+
+      <div class="group">
+        <label>Full Name</label>
+        <input id="nameInput" type="text" placeholder="e.g., Priya Sharma" />
+      </div>
+
+      <div class="group">
+        <label>Tagline</label>
+        <input id="taglineInput" type="text" placeholder="e.g., Frontend Developer" />
+      </div>
+
+      <div class="group">
+        <label>About</label>
+        <textarea id="aboutInput" rows="4" placeholder="Short bio"></textarea>
+      </div>
+
+      <div class="row">
+        <div class="group">
+          <label>Location</label>
+          <input id="locationInput" type="text" placeholder="City, Country" />
+        </div>
+        <div class="group">
+          <label>Email</label>
+          <input id="emailInput" type="email" placeholder="name@example.com" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="group">
+          <label>Website</label>
+          <input id="websiteInput" type="url" placeholder="https://example.com" />
+        </div>
+        <div class="group">
+          <label>GitHub</label>
+          <input id="githubInput" type="url" placeholder="https://github.com/username" />
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="divider">Skills</div>
+      <div class="row">
+        <input id="skillInput" type="text" placeholder="Add a skill and click Add" />
+        <button id="addSkillBtn" type="button">Add Skill</button>
+      </div>
+      <ul id="skillsList" class="chips"></ul>
+
+      <!-- Projects -->
+      <div class="divider">Projects</div>
+      <div class="group">
+        <label>Project Title</label>
+        <input id="projTitleInput" type="text" placeholder="e.g., Portfolio Maker" />
+      </div>
+      <div class="group">
+        <label>Project Description</label>
+        <textarea id="projDescInput" rows="3" placeholder="What this project does"></textarea>
+      </div>
+      <div class="row">
+        <div class="group">
+          <label>Project Link</label>
+          <input id="projLinkInput" type="url" placeholder="https://demo-or-repo" />
+        </div>
+        <div class="group">
+          <label>Tech Stack (comma separated)</label>
+          <input id="projTechInput" type="text" placeholder="HTML, CSS, JS" />
+        </div>
+      </div>
+      <button id="addProjectBtn" type="button">Add Project</button>
+      <div id="projectsBuilderList" class="list"></div>
+    </section>
+
+    <!-- Preview -->
+    <section class="panel preview">
+      <h2>Live Preview</h2>
+      <article id="preview">
+        <header class="hero">
+          <h1 id="pName">Your Name</h1>
+          <p id="pTagline">Your Tagline</p>
+          <p id="pMeta"><span id="pLocation">Location</span> • <a id="pEmail" href="#">Email</a></p>
+          <p class="links">
+            <a id="pWebsite" href="#" target="_blank" rel="noopener">Website</a>
+            <a id="pGithub" href="#" target="_blank" rel="noopener">GitHub</a>
+          </p>
+        </header>
+
+        <section>
+          <h3>About</h3>
+          <p id="pAbout">Write a short intro in the builder to see it here.</p>
+        </section>
+
+        <section>
+          <h3>Skills</h3>
+          <ul id="pSkills" class="chips"></ul>
+        </section>
+
+        <section>
+          <h3>Projects</h3>
+          <div id="pProjects" class="cards"></div>
+        </section>
+      </article>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <small>Tip: Click Save to store data locally. Load retrieves your last edit. Download exports a static HTML of the preview.</small>
+  </footer>
+
   <script src="js/script.js"></script>
 </body>
 </html>
